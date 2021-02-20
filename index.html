@@ -64,7 +64,7 @@
         </div>
     </div>
     <script>
-        //login button event handlr
+        //login button event handler
         const loginBtn = document.getElementById("login");
         loginBtn.addEventListener('click',function(event){
             const loginArea = document.getElementById('login-area');
@@ -75,8 +75,7 @@
         //deposit button event handlr
         const depositBtn = document.getElementById("addDeposit");
         depositBtn.addEventListener('click',function(){
-            const depositAmount = document.getElementById('depositAmount').value;
-            const depositNumber = parseFloat(depositAmount);
+            const depositNumber = getInputNumber("depositAmount");
 
             // const currentDeposit = document.getElementById('currentDeposit').innerText;
             // const currentDepositNumber = parseFloat(currentDeposit);
@@ -88,16 +87,25 @@
             updateSpanText("currentBalance", depositNumber);
 
 
-            document.getElementById('depositAmount').value = ""
+            document.getElementById('depositAmount').value = "";
 
         })
 
         //withdraw button event handler
         const withdrawBtn = document.getElementById("addWithdraw");
         withdrawBtn.addEventListener('click', function(){
-            const withdrawAmount = document.getElementById('withdrawAmount').value;
-            console.log(withdrawAmount);
+            const withdrawNumber = getInputNumber("withdrawAmount");
+            console.log(withdrawNumber);
+
         })
+
+        function getInputNumber(id){
+            const amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(amount);
+            return amountNumber;
+        };
+
+        
 
         function updateSpanText(id, depositNumber){
             const current = document.getElementById(id).innerText;
